@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 };
 
-function demo_custom_block_editor_assets(){
+function demo_block_editor_assets(){
 	wp_enqueue_script(
 		'demo-editor-script',
 		plugin_dir_url( __FILE__ ) . 'build/index.js',
@@ -24,10 +24,9 @@ function demo_custom_block_editor_assets(){
 		'1.0.0'
 	);
 }
+add_action( 'enqueue_block_editor_assets', 'demo_block_editor_assets' );
 
-add_action( 'enqueue_block_editor_assets', 'demo_custom_block_editor_assets' );
-
-function demo_custom_block_assets(){
+function demo_block_assets(){
 	wp_enqueue_style(
 		'demo-editor-style',
 		plugin_dir_url( __FILE__ ) . 'demo.css',
@@ -35,6 +34,4 @@ function demo_custom_block_assets(){
 		'1.0.0'
 	);
 }
-
-add_action( 'enqueue_block_assets', 'demo_custom_block_assets' );
-
+add_action( 'enqueue_block_assets', 'demo_block_assets' );
